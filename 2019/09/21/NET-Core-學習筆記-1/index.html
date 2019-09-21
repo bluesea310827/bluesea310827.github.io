@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>.NET Core 學習筆記（1） - Sylvia&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="前陣子參加了兩天保哥的.NET Core開發實戰課程，雖說曾經自己稍微靠Google玩過一陣子.NET Core，但畢竟那都是零碎的知識，能有位老師仔細講解架構還是比較能完整的學習。　　這兩天的課程真的讓我學到很多，尤其在最後保哥的經驗分享與討論軟體架構的部分讓我非常有收穫。軟體架構類的知識一直都是很難單純靠網路上Google就能學到的東西，我之前也因此被面試官電過……除非工作環境在這塊已經相">
+<meta name="keywords" content="Note,.NET Core,Newbie">
+<meta property="og:type" content="article">
+<meta property="og:title" content=".NET Core 學習筆記（1）">
+<meta property="og:url" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/index.html">
+<meta property="og:site_name" content="Sylvia&#39;s Blog">
+<meta property="og:description" content="前陣子參加了兩天保哥的.NET Core開發實戰課程，雖說曾經自己稍微靠Google玩過一陣子.NET Core，但畢竟那都是零碎的知識，能有位老師仔細講解架構還是比較能完整的學習。　　這兩天的課程真的讓我學到很多，尤其在最後保哥的經驗分享與討論軟體架構的部分讓我非常有收穫。軟體架構類的知識一直都是很難單純靠網路上Google就能學到的東西，我之前也因此被面試官電過……除非工作環境在這塊已經相">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_new_console.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_new_classlib.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_new_mstest.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_new_sln.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_build.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_clean.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_run.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_publish.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_build_sln.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_clean_sln.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_publish_sln.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_dll.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_msbuild.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_test_t.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_test.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_vstest.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_ref.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_pack.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_publish_scd.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_publish_scd_files.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_publish_nonscd.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_publish_nonscd_files.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_rid.jpg">
+<meta property="og:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_publish_dir.jpg">
+<meta property="og:updated_time" content="2019-09-21T09:14:16.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=".NET Core 學習筆記（1）">
+<meta name="twitter:description" content="前陣子參加了兩天保哥的.NET Core開發實戰課程，雖說曾經自己稍微靠Google玩過一陣子.NET Core，但畢竟那都是零碎的知識，能有位老師仔細講解架構還是比較能完整的學習。　　這兩天的課程真的讓我學到很多，尤其在最後保哥的經驗分享與討論軟體架構的部分讓我非常有收穫。軟體架構類的知識一直都是很難單純靠網路上Google就能學到的東西，我之前也因此被面試官電過……除非工作環境在這塊已經相">
+<meta name="twitter:image" content="http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/dotnet_new_console.jpg">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Sylvia&#39;s Blog
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/bluesea310827">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            .NET Core 學習筆記（1）
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-21T08:29:04.000Z" itemprop="datePublished">Sep 21 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/NET-Core/">.NET Core</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            6 minutes read (About 937 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>　　前陣子參加了兩天保哥的.NET Core開發實戰課程，雖說曾經自己稍微靠Google玩過一陣子.NET Core，但畢竟那都是零碎的知識，能有位老師仔細講解架構還是比較能完整的學習。<br>　　這兩天的課程真的讓我學到很多，尤其在最後保哥的經驗分享與討論軟體架構的部分讓我非常有收穫。軟體架構類的知識一直都是很難單純靠網路上Google就能學到的東西，我之前也因此被面試官電過……除非工作環境在這塊已經相當成熟有很多範例可以研究外，在網路上除了多看開源專案以外似乎沒有什麼管道能夠有系統的學習，所以保哥在課堂上的討論對我來說真的是非常有幫助。<br>　　上完課之後短時間內大概還沒有機會實際運用.NET Core，所以決定把上課實作的過程筆記下來，未來真的有機會要用的時候才有回憶依據。</p>
+<p>　　以下內容為純筆記性質，不會有太多解說。</p>
+<a id="more"></a>
+
+<h3 id="dotnet-CLI-建立與發佈專案-amp-方案"><a href="#dotnet-CLI-建立與發佈專案-amp-方案" class="headerlink" title="dotnet CLI 建立與發佈專案 &amp; 方案"></a>dotnet CLI 建立與發佈專案 &amp; 方案</h3><ul>
+<li><p>dotnet new -l</p>
+<ul>
+<li>列出可使用的範本</li>
+<li>e.g. mvc、webapp、console等</li>
+</ul>
+</li>
+<li><p>dotnet new console 建立主控台專案<br><img src="dotnet_new_console.jpg" alt="dotnet_new_console"></p>
+</li>
+</ul>
+<ul>
+<li><p>dotnet new classlib 建立類別庫專案<br><img src="dotnet_new_classlib.jpg" alt="dotnet_new_classlib"></p>
+</li>
+<li><p>dotnet new mstest -n classlib1.test<br><img src="dotnet_new_mstest.jpg" alt="dotnet_new_mstest"></p>
+</li>
+<li><p>dotnet new sln 建立方案 &amp; 新增專案進方案 （但這個檔案基本上只有VS用）<br><img src="dotnet_new_sln.jpg" alt="dotnet_new_sln"></p>
+</li>
+<li><p>dotnet build 建置專案<br><img src="dotnet_build.jpg" alt="dotnet_build"></p>
+</li>
+<li><p>dotnet clean 清除專案<br><img src="dotnet_clean.jpg" alt="dotnet_clean"></p>
+</li>
+<li><p>dotnet run 建置並執行<br><img src="dotnet_run.jpg" alt="dotnet_run"></p>
+</li>
+<li><p>dotnet publish 發佈<br><img src="dotnet_publish.jpg" alt="dotnet_publish"></p>
+</li>
+<li><p>以上指令後面接方案檔即可針對整個方案執行<br><img src="dotnet_build_sln.jpg" alt="dotnet_build_sln"><br><img src="dotnet_clean_sln.jpg" alt="dotnet_clean_sln"><br><img src="dotnet_publish_sln.jpg" alt="dotnet_publish_sln"></p>
+</li>
+<li><p>可以直接用dotnet指令執行dll檔<br><img src="dotnet_dll.jpg" alt="dotnet_dll"></p>
+</li>
+<li><p>dotnet msbuild /p:Configuration=Release 使用MSBuild建置<br><img src="dotnet_msbuild.jpg" alt="dotnet_msbuild"></p>
+</li>
+<li><p>dotnet test -t 列出可用的測試<br><img src="dotnet_test_t.jpg" alt="dotnet_test_t"></p>
+</li>
+<li><p>dotnet test 執行測試<br><img src="dotnet_test.jpg" alt="dotnet_test"></p>
+</li>
+<li><p>dotnet vstest 執行dll測試<br><img src="dotnet_vstest.jpg" alt="dotnet_vstest"></p>
+</li>
+<li><p>dotnet add/remove/list reference {專案} 新增{專案}進參考/移除{專案}參考/列出所有參考<br><img src="dotnet_ref.jpg" alt="dotnet_ref"></p>
+</li>
+<li><p>dotnet add/remove/list package {Nuget套件} 安裝{Nuget套件}/移除 {Nuget套件}/列出所有Nuget套件<br><img src="dotnet_pack.jpg" alt="dotnet_pack"></p>
+</li>
+<li><p>部署參考官方文件： <a href="https://docs.microsoft.com/zh-tw/dotnet/core/deploying/deploy-with-cli" target="_blank" rel="noopener">https://docs.microsoft.com/zh-tw/dotnet/core/deploying/deploy-with-cli</a></p>
+</li>
+<li><p>部署類型預設為FDD</p>
+<ul>
+<li>Framework 相依部署（FDD）<ul>
+<li>目標系統需安裝.NET Core Runtime</li>
+</ul>
+</li>
+<li>Framework 相依可執行檔（FDE）<ul>
+<li>.NET Core 2.2開始支援</li>
+<li>目標系統需安裝.NET Core Runtiime</li>
+<li>會直接部署目標平台的可執行檔，不須透過dotnet執行</li>
+</ul>
+</li>
+<li>自封式部署（SCD）<ul>
+<li>目標系統不須事先安裝任何共用元件</li>
+<li>部署檔案相當大，包含.NET Core程式庫和Runtime的所有元件皆會部署，並無法與其他.NET Core應用程式共用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>dotnet publish -c Release -r win10-x64 –self-contained true 設定使用SCD部屬<br><img src="dotnet_publish_scd.jpg" alt="dotnet_publish_scd"><br><img src="dotnet_publish_scd_files.jpg" alt="dotnet_publish_scd_files"></p>
+</li>
+<li><p>dotnet publish -c Release -r win10-x64 –self-contained false 不使用SCD部署<br><img src="dotnet_publish_nonscd.jpg" alt="dotnet_publish_nonscd"><br><img src="dotnet_publish_nonscd_files.jpg" alt="dotnet_publish_nonscd_files"></p>
+</li>
+<li><p>win10-x64為RID，可用dotnet –info查詢本機RID或查表</p>
+<ul>
+<li><a href="https://docs.microsoft.com/zh-tw/dotnet/core/rid-catalog" target="_blank" rel="noopener">https://docs.microsoft.com/zh-tw/dotnet/core/rid-catalog</a><br><img src="dotnet_rid.jpg" alt="dotnet_rid"></li>
+</ul>
+</li>
+<li><p>dotnet publish -c Release /p:PublishDir=C:\Work\RD\IIS 設定publish目標資料夾<br><img src="dotnet_publish_dir.jpg" alt="dotnet_publish_dir"></p>
+</li>
+</ul>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Note/">#Note</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/NET-Core/">#.NET Core</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Newbie/">#Newbie</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/08/10/初見Hexo/">初見</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="addthis_inline_share_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4ec21d7602a5a8"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://bluesea310827.github.io/2019/09/21/NET-Core-學習筆記-1/';
+        this.page.identifier = '2019/09/21/NET-Core-學習筆記-1/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'sylviablog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/bluesea310827">
+                    
+                    GitHub
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="Linkedin" href="https://www.linkedin.com/in/sylvia-chang-28b681180/">
+                    
+                    Linkedin
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="CakeResume" href="https://www.cakeresume.com/me/sylviachang-2cfe83">
+                    
+                    CakeResume
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
