@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Categories - Sylvia&#39;s Blog</title>
+<title>Advent of Code 2019 Day 1 - Sylvia&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -14,14 +14,18 @@
 
 
 
-    <meta name="keywords" content="Note,.NET Core,Newbie,Essay,Thoughts,Advent of Code 2019,Advent of Code">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sylvia&#39;s Blog">
-<meta property="og:url" content="http://bluesea310827.github.io/categories/index.html">
+    <meta name="description" content="從同事那邊得知了這個到聖誕節一天會公開一道題目的活動，雖然到現在我也只寫到第七題，也不曉得能不能慢慢補進度寫完，但總之既然寫了就得留下點什麼，所以記錄在這裡。　　題目：Advent of Code 2019 Day 1　　使用語言：C#">
+<meta name="keywords" content="Advent of Code 2019,Advent of Code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Advent of Code 2019 Day 1">
+<meta property="og:url" content="http://bluesea310827.github.io/2019/12/18/Advent-of-Code-2019-Day-1/index.html">
 <meta property="og:site_name" content="Sylvia&#39;s Blog">
+<meta property="og:description" content="從同事那邊得知了這個到聖誕節一天會公開一道題目的活動，雖然到現在我也只寫到第七題，也不曉得能不能慢慢補進度寫完，但總之既然寫了就得留下點什麼，所以記錄在這裡。　　題目：Advent of Code 2019 Day 1　　使用語言：C#">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-18T13:07:29.051Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sylvia&#39;s Blog">
+<meta name="twitter:title" content="Advent of Code 2019 Day 1">
+<meta name="twitter:description" content="從同事那邊得知了這個到聖誕節一天會公開一道題目的活動，雖然到現在我也只寫到第七題，也不曉得能不能慢慢補進度寫完，但總之既然寫了就得留下點什麼，所以記錄在這裡。　　題目：Advent of Code 2019 Day 1　　使用語言：C#">
 
 
 
@@ -83,7 +87,7 @@
             
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item is-active" href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories">Categories</a>
             
             <a class="navbar-item " href="/tags">Tags</a>
             
@@ -108,30 +112,98 @@
     </div>
 </nav>
 
-    <section class="section section-heading">
+    <section class="section">
     <div class="container">
-        <div class="content">
-            <h5><i class="far fa-folder"></i>Categories</h5>
-        </div>
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Advent of Code 2019 Day 1
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-12-18T12:35:20.000Z" itemprop="datePublished">Dec 18 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Advent-of-Code-2019/">Advent of Code 2019</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 minutes read (About 273 words)
+        </span>
+        
     </div>
-</section>
-<section class="section">
-    <div class="container">
-        <div class="columns is-variable is-1 is-multiline is-mobile">
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>　　從同事那邊得知了這個到聖誕節一天會公開一道題目的活動，雖然到現在我也只寫到第七題，也不曉得能不能慢慢補進度寫完，但總之既然寫了就得留下點什麼，所以記錄在這裡。<br>　　題目：<a href="https://adventofcode.com/2019/day/1" target="_blank" rel="noopener">Advent of Code 2019 Day 1</a><br>　　使用語言：C#</p>
+<p>　　<a id="more"></a></p>
+<p>　　第一天的Part1題目相當單純，就只是把一串數字陣列丟進公式計算並取總和。<br>　　Part2則是一個數字重複公式遞迴計算，雖然直覺用了遞迴，但果然平常沒在用就是不熟練，稍微小卡了一下。<br>　　最後的答案附在底下，因為題目很單純所以就沒有特別把Part1和Part2分開紀錄。</p>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">					</span><br><span class="line">public class Program</span><br><span class="line">&#123;</span><br><span class="line">	public static void Main()</span><br><span class="line">	&#123;</span><br><span class="line">        // Puzzle Input</span><br><span class="line">		List&lt;int&gt; input = new List&lt;int&gt;()</span><br><span class="line">		&#123;</span><br><span class="line">			125050,115884,132344,67441,119823,86204,111093,99489,67860,51288,62815,65263,</span><br><span class="line">			56540,81380,96101,116351,56330,123123,133969,115050,137851,136900,71254,53458,</span><br><span class="line">			139976,140218,117085,52241,71251,136110,103784,132893,140216,85568,94327,85200,</span><br><span class="line">			136753,110917,147197,120161,81684,56987,143452,94728,138355,54577,59898,69123,133769,</span><br><span class="line">			118418,93530,50297,71543,113383,135203,140129,70977,58566,129593,137456,130100,130915,</span><br><span class="line">			88872,96014,62746,127048,89522,62021,85363,143611,135995,65836,146022,119911,127381,121007,</span><br><span class="line">			71577,129637,90271,54640,117213,116151,114022,107683,102079,94388,135676,69019,104056,124799,</span><br><span class="line">			107998,148696,122793,135417,52981,122890,142491,88137,57609,54921</span><br><span class="line">		&#125;;</span><br><span class="line">		</span><br><span class="line">		var ans = input.Select(x=&gt;CalculateFuel(x)).Sum();</span><br><span class="line">		</span><br><span class="line">		Console.WriteLine(ans);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	private static int CalculateFuel(int fuel)</span><br><span class="line">	&#123;</span><br><span class="line">		int result = (fuel / 3) - 2;</span><br><span class="line">		</span><br><span class="line">		if(result &lt; 1)</span><br><span class="line">			return 0;</span><br><span class="line">		</span><br><span class="line">		result += CalculateFuel(result);</span><br><span class="line">			</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Advent-of-Code-2019/">#Advent of Code 2019</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Advent-of-Code/">#Advent of Code</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
             
-            <span class="column is-narrow">
-                <a class="tag is-light article-tag" href="/categories/NET-Core/">.NET Core&nbsp;(1)</a>
-            </span>
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <span class="column is-narrow">
-                <a class="tag is-light article-tag" href="/categories/Essay/">Essay&nbsp;(1)</a>
-            </span>
+            <a href="/2019/09/21/NET-Core-學習筆記-1/">.NET Core 學習筆記（1）</a>
             
-            <span class="column is-narrow">
-                <a class="tag is-light article-tag" href="/categories/Advent-of-Code-2019/">Advent of Code 2019&nbsp;(1)</a>
-            </span>
-            
-        </div>
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="addthis_inline_share_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4ec21d7602a5a8"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://bluesea310827.github.io/2019/12/18/Advent-of-Code-2019-Day-1/';
+        this.page.identifier = '2019/12/18/Advent-of-Code-2019-Day-1/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'sylviablog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
     </div>
 </section>
     <footer class="footer">
