@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Advent-of-Code-2019-Day-3 - Sylvia&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="題目：Advent of Code 2019 Day 3　　使用語言：C#">
+<meta name="keywords" content="Advent of Code 2019,Advent of Code,C#,.NET Core,Console">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Advent-of-Code-2019-Day-3">
+<meta property="og:url" content="http://bluesea310827.github.io/2019/12/18/Advent-of-Code-2019-Day-3/index.html">
+<meta property="og:site_name" content="Sylvia&#39;s Blog">
+<meta property="og:description" content="題目：Advent of Code 2019 Day 3　　使用語言：C#">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-18T13:41:24.868Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Advent-of-Code-2019-Day-3">
+<meta name="twitter:description" content="題目：Advent of Code 2019 Day 3　　使用語言：C#">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Sylvia&#39;s Blog
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/bluesea310827">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Advent-of-Code-2019-Day-3
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-12-18T13:23:47.000Z" itemprop="datePublished">Dec 18 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Advent-of-Code-2019/">Advent of Code 2019</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            9 minutes read (About 1288 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>　　題目：<a href="https://adventofcode.com/2019/day/3" target="_blank" rel="noopener">Advent of Code 2019 Day 3</a><br>　　使用語言：C#</p>
+<p>　　<a id="more"></a></p>
+<p>　　第三天的題目稍微複雜一些，要將字串轉為行進方向，在座標上形成線，input為兩條線，Part1目標是得出這兩條線的<a href="https://en.wikipedia.org/wiki/Taxicab_geometry" target="_blank" rel="noopener">曼哈頓距離</a>。<br>　　首先光是為了理解曼哈頓距離就花了不少時間。這時候就覺得自己的英文閱讀能力有夠差……<br>　　這邊本來是想要利用斜率求交點，但因為斜率太久沒用早已忘光，再加上得到交點後還必須要確認點是不是有在指定的線段上，雖說Google研究後覺得理論上看起來應該是不難寫，但我實在是已經拖太久了，最後還是尋求了簡單暴力。<br>　　然後程式似乎沒有保留到Part2的部分……這段程式看起來只有算曼哈頓距離，然後Part2寫一半的感覺。<br>　　但總之還是先記錄著。</p>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">					</span><br><span class="line">public class Program</span><br><span class="line">&#123;</span><br><span class="line">	public static void Main()</span><br><span class="line">	&#123;</span><br><span class="line">		var firstWire = new string[] &#123;&quot;R990&quot;,&quot;U944&quot;,&quot;L921&quot;,&quot;U993&quot;,&quot;L64&quot;,&quot;U29&quot;,&quot;R899&quot;,&quot;D406&quot;,&quot;R841&quot;,&quot;U716&quot;,&quot;L32&quot;,&quot;U658&quot;,&quot;L830&quot;,&quot;D481&quot;,&quot;L441&quot;,&quot;U491&quot;, &quot;L687&quot;,&quot;D847&quot;,&quot;L459&quot;,&quot;U920&quot;,&quot;R165&quot;,&quot;U224&quot;,&quot;L896&quot;,&quot;D868&quot;,&quot;L191&quot;,&quot;U877&quot;,&quot;L909&quot;,&quot;U467&quot;,&quot;R798&quot;,&quot;U132&quot;,&quot;R234&quot;,&quot;U49&quot;,&quot;R484&quot;,&quot;U911&quot;,&quot;R108&quot;,&quot;D308&quot;, &quot;R867&quot;,&quot;U350&quot;,&quot;L404&quot;,&quot;U107&quot;,&quot;L84&quot;,&quot;U668&quot;,&quot;R850&quot;,&quot;U470&quot;,&quot;L182&quot;,&quot;U93&quot;,&quot;R284&quot;,&quot;U999&quot;,&quot;L664&quot;,&quot;U110&quot;,&quot;R650&quot;,&quot;D189&quot;,&quot;R540&quot;,&quot;D112&quot;,&quot;R794&quot;,&quot;U999&quot;, &quot;R871&quot;,&quot;D829&quot;,&quot;L549&quot;,&quot;U988&quot;,&quot;R654&quot;,&quot;D411&quot;,&quot;R323&quot;,&quot;D774&quot;,&quot;R529&quot;,&quot;U275&quot;,&quot;L909&quot;,&quot;U936&quot;,&quot;R122&quot;,&quot;D922&quot;,&quot;L331&quot;,&quot;U813&quot;,&quot;L748&quot;,&quot;U770&quot;,&quot;R511&quot;,&quot;D892&quot;, &quot;L770&quot;,&quot;U318&quot;,&quot;R661&quot;,&quot;U823&quot;,&quot;R210&quot;,&quot;D393&quot;,&quot;L694&quot;,&quot;U929&quot;,&quot;L76&quot;,&quot;D619&quot;,&quot;R395&quot;,&quot;U651&quot;,&quot;R526&quot;,&quot;U145&quot;,&quot;R851&quot;,&quot;U112&quot;,&quot;R73&quot;,&quot;D89&quot;,&quot;R17&quot;,&quot;U929&quot;,&quot;R807&quot;, &quot;U87&quot;,&quot;R764&quot;,&quot;D158&quot;,&quot;L820&quot;,&quot;U803&quot;,&quot;L785&quot;,&quot;D205&quot;,&quot;L828&quot;,&quot;D271&quot;,&quot;L839&quot;,&quot;D482&quot;,&quot;L797&quot;,&quot;U338&quot;,&quot;R322&quot;,&quot;D633&quot;,&quot;L292&quot;,&quot;U16&quot;,&quot;R627&quot;,&quot;U19&quot;,&quot;R548&quot;,&quot;U516&quot;, &quot;L384&quot;,&quot;U83&quot;,&quot;R256&quot;,&quot;U937&quot;,&quot;R404&quot;,&quot;U322&quot;,&quot;R671&quot;,&quot;D543&quot;,&quot;L412&quot;,&quot;U446&quot;,&quot;R238&quot;,&quot;U246&quot;,&quot;L794&quot;,&quot;D750&quot;,&quot;L34&quot;,&quot;U317&quot;,&quot;L994&quot;,&quot;U874&quot;,&quot;L247&quot;,&quot;D20&quot;,&quot;R491&quot;, &quot;U834&quot;,&quot;L498&quot;,&quot;D987&quot;,&quot;R2&quot;,&quot;U175&quot;,&quot;R452&quot;,&quot;U168&quot;,&quot;R495&quot;,&quot;D183&quot;,&quot;R201&quot;,&quot;U532&quot;,&quot;L192&quot;,&quot;U984&quot;,&quot;L566&quot;,&quot;D471&quot;,&quot;L704&quot;,&quot;D2&quot;,&quot;L776&quot;,&quot;U5&quot;,&quot;R911&quot;,&quot;U308&quot;, &quot;R763&quot;,&quot;D555&quot;,&quot;R458&quot;,&quot;D439&quot;,&quot;L968&quot;,&quot;D78&quot;,&quot;R549&quot;,&quot;D583&quot;,&quot;R289&quot;,&quot;D355&quot;,&quot;L503&quot;,&quot;D871&quot;,&quot;L881&quot;,&quot;U516&quot;,&quot;L507&quot;,&quot;D551&quot;,&quot;R711&quot;,&quot;U702&quot;,&quot;L308&quot;,&quot;D905&quot;, &quot;L408&quot;,&quot;U932&quot;,&quot;L884&quot;,&quot;U218&quot;,&quot;L158&quot;,&quot;D562&quot;,&quot;L200&quot;,&quot;D114&quot;,&quot;R673&quot;,&quot;U448&quot;,&quot;R887&quot;,&quot;U181&quot;,&quot;R247&quot;,&quot;U329&quot;,&quot;L965&quot;,&quot;U495&quot;,&quot;L329&quot;,&quot;D162&quot;,&quot;L265&quot;,&quot;D389&quot;, &quot;R419&quot;,&quot;U435&quot;,&quot;R258&quot;,&quot;U146&quot;,&quot;R208&quot;,&quot;D184&quot;,&quot;R730&quot;,&quot;D19&quot;,&quot;L78&quot;,&quot;D886&quot;,&quot;R472&quot;,&quot;D350&quot;,&quot;R484&quot;,&quot;U392&quot;,&quot;L542&quot;,&quot;U601&quot;,&quot;L202&quot;,&quot;U974&quot;,&quot;L310&quot;,&quot;U52&quot;,&quot;L537&quot;, &quot;U597&quot;,&quot;L163&quot;,&quot;D655&quot;,&quot;R928&quot;,&quot;U269&quot;,&quot;L926&quot;,&quot;D790&quot;,&quot;L513&quot;,&quot;U441&quot;,&quot;L90&quot;,&quot;U581&quot;,&quot;L211&quot;,&quot;U871&quot;,&quot;R603&quot;,&quot;D130&quot;,&quot;L220&quot;,&quot;U459&quot;,&quot;L933&quot;,&quot;U648&quot;,&quot;R721&quot;, &quot;U642&quot;,&quot;R301&quot;,&quot;U537&quot;,&quot;L858&quot;,&quot;D777&quot;,&quot;R823&quot;,&quot;U14&quot;,&quot;R820&quot;,&quot;D218&quot;,&quot;L96&quot;,&quot;D318&quot;,&quot;L206&quot;,&quot;U280&quot;,&quot;R887&quot;,&quot;D241&quot;,&quot;L752&quot;,&quot;U828&quot;,&quot;R354&quot;,&quot;U864&quot;,&quot;R844&quot;, &quot;D872&quot;,&quot;L728&quot;,&quot;D298&quot;,&quot;L234&quot;,&quot;U695&quot;,&quot;R434&quot;,&quot;D94&quot;,&quot;R905&quot;,&quot;D592&quot;,&quot;L32&quot;,&quot;D860&quot;,&quot;R680&quot;,&quot;D197&quot;,&quot;R886&quot;,&quot;U760&quot;,&quot;L232&quot;,&quot;U916&quot;,&quot;L452&quot;,&quot;U248&quot;,&quot;R715&quot;, &quot;D773&quot;,&quot;R867&quot;,&quot;U77&quot;,&quot;R751&quot;,&quot;D36&quot;,&quot;R565&quot;,&quot;U897&quot;,&quot;R782&quot;,&quot;U931&quot;,&quot;R546&quot;,&quot;U261&quot;,&quot;R920&quot;,&quot;D296&quot;,&quot;R451&quot;,&quot;U258&quot;,&quot;L394&quot;,&quot;U965&quot;,&quot;R912&quot;,&quot;D593&quot;,&quot;L990&quot;&#125;;</span><br><span class="line">		var secondWire = new string[] &#123;&quot;L994&quot;,&quot;U515&quot;,&quot;R163&quot;,&quot;U863&quot;,&quot;L343&quot;,&quot;U162&quot;,&quot;L875&quot;,&quot;D92&quot;,&quot;L483&quot;,&quot;D601&quot;,&quot;R79&quot;,&quot;D761&quot;,&quot;L389&quot;,&quot;U167&quot;,&quot;L145&quot;,&quot;U145&quot;, &quot;L247&quot;,&quot;U886&quot;,&quot;R61&quot;,&quot;U820&quot;,&quot;L584&quot;,&quot;D239&quot;,&quot;R402&quot;,&quot;U805&quot;,&quot;R956&quot;,&quot;U126&quot;,&quot;R615&quot;,&quot;D322&quot;,&quot;R431&quot;,&quot;D460&quot;,&quot;R397&quot;,&quot;D511&quot;,&quot;R805&quot;,&quot;D177&quot;,&quot;L778&quot;,&quot;U296&quot;, &quot;R599&quot;,&quot;U759&quot;,&quot;R40&quot;,&quot;U1&quot;,&quot;L422&quot;,&quot;U751&quot;,&quot;R94&quot;,&quot;U401&quot;,&quot;R504&quot;,&quot;U940&quot;,&quot;L564&quot;,&quot;U24&quot;,&quot;R595&quot;,&quot;U944&quot;,&quot;R815&quot;,&quot;U672&quot;,&quot;R787&quot;,&quot;D854&quot;,&quot;R579&quot;,&quot;D604&quot;,&quot;L62&quot;, &quot;U670&quot;,&quot;L516&quot;,&quot;U199&quot;,&quot;L639&quot;,&quot;D919&quot;,&quot;L485&quot;,&quot;U655&quot;,&quot;R391&quot;,&quot;U669&quot;,&quot;R772&quot;,&quot;D34&quot;,&quot;R868&quot;,&quot;D12&quot;,&quot;L108&quot;,&quot;U295&quot;,&quot;R701&quot;,&quot;D603&quot;,&quot;R493&quot;,&quot;U927&quot;,&quot;R29&quot;,&quot;D34&quot;, &quot;R499&quot;,&quot;U111&quot;,&quot;L87&quot;,&quot;U190&quot;,&quot;R884&quot;,&quot;D658&quot;,&quot;R474&quot;,&quot;D166&quot;,&quot;R921&quot;,&quot;U698&quot;,&quot;R592&quot;,&quot;U25&quot;,&quot;R710&quot;,&quot;D398&quot;,&quot;L26&quot;,&quot;U696&quot;,&quot;L432&quot;,&quot;D887&quot;,&quot;R469&quot;,&quot;U656&quot;,&quot;L428&quot;, &quot;D188&quot;,&quot;L543&quot;,&quot;D150&quot;,&quot;R160&quot;,&quot;U543&quot;,&quot;R743&quot;,&quot;U692&quot;,&quot;R618&quot;,&quot;D148&quot;,&quot;R956&quot;,&quot;U753&quot;,&quot;L175&quot;,&quot;D789&quot;,&quot;R897&quot;,&quot;U305&quot;,&quot;L137&quot;,&quot;D914&quot;,&quot;R330&quot;,&quot;D780&quot;,&quot;R744&quot;, &quot;D473&quot;,&quot;L754&quot;,&quot;U482&quot;,&quot;L975&quot;,&quot;D413&quot;,&quot;L698&quot;,&quot;U656&quot;,&quot;L177&quot;,&quot;U419&quot;,&quot;R13&quot;,&quot;D827&quot;,&quot;L67&quot;,&quot;D800&quot;,&quot;R369&quot;,&quot;U97&quot;,&quot;L34&quot;,&quot;D588&quot;,&quot;L41&quot;,&quot;D760&quot;,&quot;L164&quot;,&quot;U224&quot;, &quot;L921&quot;,&quot;D311&quot;,&quot;R489&quot;,&quot;U956&quot;,&quot;R277&quot;,&quot;U180&quot;,&quot;R724&quot;,&quot;U748&quot;,&quot;R785&quot;,&quot;U826&quot;,&quot;L426&quot;,&quot;D957&quot;,&quot;R303&quot;,&quot;U16&quot;,&quot;L729&quot;,&quot;U224&quot;,&quot;L712&quot;,&quot;U43&quot;,&quot;L280&quot;,&quot;D648&quot;, &quot;R987&quot;,&quot;D941&quot;,&quot;R154&quot;,&quot;D581&quot;,&quot;R876&quot;,&quot;U615&quot;,&quot;L480&quot;,&quot;D103&quot;,&quot;R636&quot;,&quot;D276&quot;,&quot;R948&quot;,&quot;U89&quot;,&quot;R434&quot;,&quot;D212&quot;,&quot;R837&quot;,&quot;D295&quot;,&quot;R532&quot;,&quot;D390&quot;,&quot;R374&quot;,&quot;D926&quot;, &quot;R911&quot;,&quot;D110&quot;,&quot;R258&quot;,&quot;U83&quot;,&quot;L955&quot;,&quot;U747&quot;,&quot;L925&quot;,&quot;D366&quot;,&quot;R571&quot;,&quot;U241&quot;,&quot;R628&quot;,&quot;D344&quot;,&quot;R919&quot;,&quot;U117&quot;,&quot;R337&quot;,&quot;D683&quot;,&quot;L720&quot;,&quot;U261&quot;,&quot;L124&quot;,&quot;D545&quot;, &quot;R979&quot;,&quot;D601&quot;,&quot;L906&quot;,&quot;D324&quot;,&quot;R441&quot;,&quot;U678&quot;,&quot;L978&quot;,&quot;U744&quot;,&quot;L472&quot;,&quot;D217&quot;,&quot;R799&quot;,&quot;U740&quot;,&quot;L77&quot;,&quot;U964&quot;,&quot;L278&quot;,&quot;U497&quot;,&quot;R441&quot;,&quot;U21&quot;,&quot;L37&quot;,&quot;U319&quot;,&quot;L24&quot;, &quot;D211&quot;,&quot;L44&quot;,&quot;U459&quot;,&quot;R35&quot;,&quot;D609&quot;,&quot;R900&quot;,&quot;D538&quot;,&quot;R397&quot;,&quot;D776&quot;,&quot;R629&quot;,&quot;D860&quot;,&quot;R519&quot;,&quot;D340&quot;,&quot;R168&quot;,&quot;U603&quot;,&quot;R46&quot;,&quot;U889&quot;,&quot;R897&quot;,&quot;D442&quot;,&quot;R997&quot;,&quot;U705&quot;, &quot;L82&quot;,&quot;D963&quot;,&quot;R941&quot;,&quot;U701&quot;,&quot;L347&quot;,&quot;D824&quot;,&quot;R269&quot;,&quot;U891&quot;,&quot;L569&quot;,&quot;D558&quot;,&quot;L867&quot;,&quot;U145&quot;,&quot;R121&quot;,&quot;D369&quot;,&quot;R542&quot;,&quot;U227&quot;,&quot;L198&quot;,&quot;U863&quot;,&quot;L755&quot;,&quot;U273&quot;, &quot;L734&quot;,&quot;D233&quot;,&quot;R578&quot;,&quot;U67&quot;,&quot;L821&quot;,&quot;U600&quot;,&quot;L203&quot;,&quot;D234&quot;,&quot;R695&quot;,&quot;U819&quot;,&quot;L639&quot;,&quot;D700&quot;,&quot;R295&quot;,&quot;D129&quot;,&quot;L612&quot;,&quot;U157&quot;,&quot;R212&quot;,&quot;U536&quot;,&quot;L968&quot;,&quot;U562&quot;, &quot;L999&quot;,&quot;D391&quot;,&quot;L231&quot;,&quot;U262&quot;,&quot;R334&quot;,&quot;D967&quot;,&quot;R463&quot;,&quot;U748&quot;,&quot;R842&quot;,&quot;D500&quot;,&quot;R860&quot;,&quot;U856&quot;,&quot;R263&quot;,&quot;D633&quot;,&quot;R460&quot;,&quot;D337&quot;,&quot;L880&quot;,&quot;U146&quot;,&quot;R910&quot;&#125;;</span><br><span class="line">		</span><br><span class="line">		// Example</span><br><span class="line">		//var firstWire = new string[] &#123;&quot;R75&quot;,&quot;D30&quot;,&quot;R83&quot;,&quot;U83&quot;,&quot;L12&quot;,&quot;D49&quot;,&quot;R71&quot;,&quot;U7&quot;,&quot;L72&quot;&#125;;</span><br><span class="line">		//var secondWire = new string[] &#123;&quot;U62&quot;,&quot;R66&quot;,&quot;U55&quot;,&quot;R34&quot;,&quot;D71&quot;,&quot;R55&quot;,&quot;D58&quot;,&quot;R83&quot;&#125;;</span><br><span class="line">		</span><br><span class="line">		var firstRoute = GetRoute(firstWire);</span><br><span class="line">		var secondRoute = GetRoute(secondWire);</span><br><span class="line">		</span><br><span class="line">		var result = 0;</span><br><span class="line">		var targetPoint = new Coordinate();</span><br><span class="line">		</span><br><span class="line">		var crossPoint = firstRoute.Join(secondRoute, f =&gt; new &#123;f.x, f.y&#125;, s =&gt; new &#123;s.x, s.y&#125;, (f, s) =&gt; f)</span><br><span class="line">			                       .Where(r=&gt;!r.x.Equals(0) &amp;&amp; !r.y.Equals(0)).ToList();</span><br><span class="line">		</span><br><span class="line">		foreach(var point in crossPoint)</span><br><span class="line">		&#123;</span><br><span class="line">			var Manhattandistance = Math.Abs(point.x) + Math.Abs(point.y);</span><br><span class="line">			if(result.Equals(0) || result &gt; Manhattandistance)</span><br><span class="line">			&#123;</span><br><span class="line">				targetPoint = point;</span><br><span class="line">				result = Manhattandistance;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		firstRoute = firstRoute.Where(x=&gt;x.step&lt;targetPoint.step).ToList();</span><br><span class="line">		firstRoute.Add(targetPoint);</span><br><span class="line">		secondRoute = secondRoute.Where(x=&gt;x.step&lt;targetPoint.step).ToList();</span><br><span class="line">		secondRoute.Add(targetPoint);</span><br><span class="line">		</span><br><span class="line">		var firstRouteDistance = GetTargetDistance(firstRoute, targetPoint.step);</span><br><span class="line">		var secondRouteDistance = GetTargetDistance(secondRoute, targetPoint.step);</span><br><span class="line">			</span><br><span class="line">		Console.WriteLine(result);</span><br><span class="line">		Console.WriteLine(firstRouteDistance+secondRouteDistance);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public class Coordinate</span><br><span class="line">	&#123;</span><br><span class="line">		public int x &#123;get;set;&#125;</span><br><span class="line">		public int y &#123;get;set;&#125;</span><br><span class="line">		public int step &#123;get;set;&#125;</span><br><span class="line">		public bool isDest &#123;get;set;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static List&lt;Coordinate&gt; GetRoute(string[] routeMap)</span><br><span class="line">	&#123;</span><br><span class="line">		var result = new List&lt;Coordinate&gt;();</span><br><span class="line">		var position = new Coordinate() &#123;x=0, y=0, step=0, isDest=true&#125;;</span><br><span class="line">		</span><br><span class="line">		for(int i = 0; i&lt; routeMap.Length;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			var data = CalculateCoordinate(position, routeMap[i]);</span><br><span class="line">			position = data.position;</span><br><span class="line">			result.AddRange(data.route);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static int GetTargetDistance(List&lt;Coordinate&gt; source, int step)</span><br><span class="line">	&#123;</span><br><span class="line">		var distance = 0;</span><br><span class="line">		for(int i = 0;i &lt; step;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			//Console.WriteLine(GetDistance(source[i], source[i+1]));</span><br><span class="line">			distance += GetDistance(source[i], source[i+1]);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		return distance;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static int GetDistance(Coordinate startPoint, Coordinate endPoint)</span><br><span class="line">	&#123;</span><br><span class="line">		return Math.Abs(startPoint.x - endPoint.x) + Math.Abs(startPoint.y - endPoint.y);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static (Coordinate position, List&lt;Coordinate&gt; route) CalculateCoordinate(Coordinate position, string move)</span><br><span class="line">	&#123;</span><br><span class="line">		var result = position;</span><br><span class="line">		var vector = move.Substring(0, 1);</span><br><span class="line">		var distance = Convert.ToInt32(move.Substring(1));</span><br><span class="line">		var route = new List&lt;Coordinate&gt;();</span><br><span class="line">		result.step += 1;</span><br><span class="line">		result.isDest = true;</span><br><span class="line">		</span><br><span class="line">		switch(vector)</span><br><span class="line">		&#123;</span><br><span class="line">			case &quot;R&quot;:</span><br><span class="line">				route.AddRange(GetRoutePoints(result.x, result.x + distance, result.y, vector, result.step));</span><br><span class="line">				result.x += distance;</span><br><span class="line">				break;</span><br><span class="line">			case &quot;L&quot;:</span><br><span class="line">				route.AddRange(GetRoutePoints(result.x - distance, result.x, result.y, vector, result.step));</span><br><span class="line">				result.x -= distance;</span><br><span class="line">				break;</span><br><span class="line">			case &quot;U&quot;:</span><br><span class="line">				route.AddRange(GetRoutePoints(result.y, result.y + distance, result.x, vector, result.step));</span><br><span class="line">				result.y += distance;</span><br><span class="line">				break;</span><br><span class="line">			case &quot;D&quot;:</span><br><span class="line">				route.AddRange(GetRoutePoints(result.y - distance, result.y, result.x, vector, result.step));</span><br><span class="line">				result.y -= distance;</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		route.Add(result);</span><br><span class="line">		</span><br><span class="line">		return (result, route);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static List&lt;Coordinate&gt; GetRoutePoints(int start, int end, int fixPoint, string direction, int step)</span><br><span class="line">	&#123;</span><br><span class="line">		var result = new List&lt;Coordinate&gt;();</span><br><span class="line">		</span><br><span class="line">		for(int i = start;i&lt;end;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(direction.Equals(&quot;R&quot;) ||direction.Equals(&quot;L&quot;))</span><br><span class="line">				result.Add(new Coordinate() &#123;x=i, y=fixPoint, step = step, isDest=false&#125;);</span><br><span class="line">			if(direction.Equals(&quot;U&quot;) ||direction.Equals(&quot;D&quot;))</span><br><span class="line">				result.Add(new Coordinate() &#123;x=fixPoint, y=i, step = step, isDest=false&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Advent-of-Code-2019/">#Advent of Code 2019</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Advent-of-Code/">#Advent of Code</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/C/">#C#</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/NET-Core/">#.NET Core</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Console/">#Console</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/12/18/Advent-of-Code-2019-Day-2/">Advent-of-Code-2019-Day-2</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="addthis_inline_share_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4ec21d7602a5a8"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://bluesea310827.github.io/2019/12/18/Advent-of-Code-2019-Day-3/';
+        this.page.identifier = '2019/12/18/Advent-of-Code-2019-Day-3/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'sylviablog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/bluesea310827">
+                    
+                    GitHub
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="Linkedin" href="https://www.linkedin.com/in/sylvia-chang-28b681180/">
+                    
+                    Linkedin
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="CakeResume" href="https://www.cakeresume.com/me/sylviachang-2cfe83">
+                    
+                    CakeResume
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

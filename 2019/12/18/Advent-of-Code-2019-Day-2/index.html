@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Category: Advent of Code 2019 - Sylvia&#39;s Blog</title>
+<title>Advent-of-Code-2019-Day-2 - Sylvia&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -14,13 +14,18 @@
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Sylvia&#39;s Blog">
-<meta property="og:url" content="http://bluesea310827.github.io/categories/Advent-of-Code-2019/index.html">
+    <meta name="description" content="題目：Advent of Code 2019 Day 2　　使用語言：C#">
+<meta name="keywords" content="Advent of Code 2019,Advent of Code,C#,.NET Core,Console">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Advent-of-Code-2019-Day-2">
+<meta property="og:url" content="http://bluesea310827.github.io/2019/12/18/Advent-of-Code-2019-Day-2/index.html">
 <meta property="og:site_name" content="Sylvia&#39;s Blog">
+<meta property="og:description" content="題目：Advent of Code 2019 Day 2　　使用語言：C#">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-18T13:22:52.412Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sylvia&#39;s Blog">
+<meta name="twitter:title" content="Advent-of-Code-2019-Day-2">
+<meta name="twitter:description" content="題目：Advent of Code 2019 Day 2　　使用語言：C#">
 
 
 
@@ -107,61 +112,12 @@
     </div>
 </nav>
 
-    <section class="section section-heading">
+    <section class="section">
     <div class="container">
-        <div class="content">
-            <h5><i class="far fa-folder"></i>Advent of Code 2019</h5>
-        </div>
-    </div>
-</section>
-<section class="section">
-    <div class="container">
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
+    <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/12/18/Advent-of-Code-2019-Day-3/" itemprop="url">Advent-of-Code-2019-Day-3</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-12-18T13:23:47.000Z" itemprop="datePublished">Dec 18 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Advent-of-Code-2019/">Advent of Code 2019</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            9 minutes read (About 1288 words)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>　　題目：<a href="https://adventofcode.com/2019/day/3" target="_blank" rel="noopener">Advent of Code 2019 Day 3</a><br>　　使用語言：C#</p>
-<p></p>
-        <p class="article-more-link">
-            <a href="/2019/12/18/Advent-of-Code-2019-Day-3/#more">Read More</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/12/18/Advent-of-Code-2019-Day-2/" itemprop="url">Advent-of-Code-2019-Day-2</a>
+            Advent-of-Code-2019-Day-2
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -185,62 +141,77 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <p>　　題目：<a href="https://adventofcode.com/2019/day/2" target="_blank" rel="noopener">Advent of Code 2019 Day 2</a><br>　　使用語言：C#</p>
-<p></p>
-        <p class="article-more-link">
-            <a href="/2019/12/18/Advent-of-Code-2019-Day-2/#more">Read More</a>
-        </p>
+<p>　　<a id="more"></a></p>
+<p>　　第二天的題目是IntcodeProgram，簡單來說就是輸入一個數字會執行指定行為，題目設計有難度越來越高的趨勢，所以還不算很難，而且這次寫的IntcodeProgram後面還會再繼續發展，老實說有點後悔偷懶沒有好好寫，後面在加功能的時候就寫得有點痛苦。<br>　　Part1是給一串指令數字和指定input算出最後結果，Part2則是給定最後結果和input範圍要算出input，都還不算太難。</p>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">	</span><br><span class="line">public class Program</span><br><span class="line">&#123;</span><br><span class="line">	public static void Main()</span><br><span class="line">	&#123;</span><br><span class="line">		int result = 0;</span><br><span class="line">		int targetValue = 19690720;</span><br><span class="line">		int noun = 0;</span><br><span class="line">		int verb = 0;</span><br><span class="line">		</span><br><span class="line">		for(noun = 0;noun&lt; 100;noun++)</span><br><span class="line">		&#123;</span><br><span class="line">			for(verb = 0;verb &lt; 100;verb++)</span><br><span class="line">			&#123;</span><br><span class="line">				result = IntcodeProgram(noun, verb, 1);</span><br><span class="line">				if(result.Equals(targetValue)) break;</span><br><span class="line">				result = IntcodeProgram(noun, verb, 2);</span><br><span class="line">				if(result.Equals(targetValue)) break;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			if(result.Equals(targetValue)) break;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Console.WriteLine(100 * noun + verb);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static int IntcodeProgram(int noun, int verb, int firstOpCode)</span><br><span class="line">	&#123;</span><br><span class="line">		var inputArray = new int[] &#123;firstOpCode,noun,verb,3,1,1,2,3,1,3,4,3,1,5,0,3,2,1,10,19,2,9,19,23,1,9,23,</span><br><span class="line">									27,2,27,9,31,1,31,5,35,2,35,9,39,1,39,10,43,2,43,13,47,1,47,</span><br><span class="line">									6,51,2,51,10,55,1,9,55,59,2,6,59,63,1,63,6,67,1,67,10,71,1,</span><br><span class="line">									71,10,75,2,9,75,79,1,5,79,83,2,9,83,87,1,87,9,91,2,91,13,95,</span><br><span class="line">									1,95,9,99,1,99,6,103,2,103,6,107,1,107,5,111,1,13,111,115,</span><br><span class="line">									2,115,6,119,1,119,5,123,1,2,123,127,1,6,127,0,99,2,14,0,0&#125;;</span><br><span class="line">		</span><br><span class="line">		// Example input</span><br><span class="line">		// var inputArray = new int[] &#123;1,9,10,3,2,3,11,0,99,30,40,50&#125;;</span><br><span class="line">		</span><br><span class="line">		for(int i = 0; i &lt; inputArray.Length - 3;i += 4)</span><br><span class="line">		&#123;</span><br><span class="line">			var opCode = inputArray[i];</span><br><span class="line">			</span><br><span class="line">			if(opCode.Equals(99) || (!opCode.Equals(1) &amp;&amp; !opCode.Equals(2))) break;</span><br><span class="line">			</span><br><span class="line">			var firstValuePosition = inputArray[i+1];</span><br><span class="line">			var secondValuePosition = inputArray[i+2];</span><br><span class="line">			var outputPosition = inputArray[i+3];</span><br><span class="line">			</span><br><span class="line">			int outputValue = 0;</span><br><span class="line">			</span><br><span class="line">			if(opCode.Equals(1))</span><br><span class="line">				outputValue = inputArray[firstValuePosition] + inputArray[secondValuePosition];</span><br><span class="line">			else</span><br><span class="line">				outputValue = inputArray[firstValuePosition] * inputArray[secondValuePosition];</span><br><span class="line">			</span><br><span class="line">			inputArray[outputPosition] = outputValue;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		return inputArray[0];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
     
     </div>
     
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Advent-of-Code-2019/">#Advent of Code 2019</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Advent-of-Code/">#Advent of Code</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/C/">#C#</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/NET-Core/">#.NET Core</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Console/">#Console</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/12/18/Advent-of-Code-2019-Day-3/">Advent-of-Code-2019-Day-3</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/12/18/Advent-of-Code-2019-Day-1/">Advent of Code 2019 Day 1</a>
+            
+        </span>
+    </div>
     
 </article>
 
 
+<div class="sharebox">
+    
+<div class="addthis_inline_share_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4ec21d7602a5a8"></script>
 
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/12/18/Advent-of-Code-2019-Day-1/" itemprop="url">Advent of Code 2019 Day 1</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-12-18T12:35:20.000Z" itemprop="datePublished">Dec 18 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Advent-of-Code-2019/">Advent of Code 2019</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            2 minutes read (About 273 words)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>　　從同事那邊得知了這個到聖誕節一天會公開一道題目的活動，雖然到現在我也只寫到第六題，也不曉得能不能慢慢補進度寫完，但總之既然寫了就得留下點什麼，所以記錄在這裡。<br>　　題目：<a href="https://adventofcode.com/2019/day/1" target="_blank" rel="noopener">Advent of Code 2019 Day 1</a><br>　　使用語言：C#</p>
-<p></p>
-        <p class="article-more-link">
-            <a href="/2019/12/18/Advent-of-Code-2019-Day-1/#more">Read More</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
+</div>
 
 
 
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://bluesea310827.github.io/2019/12/18/Advent-of-Code-2019-Day-2/';
+        this.page.identifier = '2019/12/18/Advent-of-Code-2019-Day-2/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'sylviablog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
 
+<div id="disqus_thread">
     
-    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
     </div>
 </section>
     <footer class="footer">
