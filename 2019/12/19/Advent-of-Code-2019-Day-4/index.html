@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Advent-of-Code-2019-Day-4 - Sylvia&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="題目：Advent of Code 2019 Day 4　　使用語言：C#">
+<meta name="keywords" content=".NET Core,Advent of Code 2019,Advent of Code,C#,Console">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Advent-of-Code-2019-Day-4">
+<meta property="og:url" content="http://bluesea310827.github.io/2019/12/19/Advent-of-Code-2019-Day-4/index.html">
+<meta property="og:site_name" content="Sylvia&#39;s Blog">
+<meta property="og:description" content="題目：Advent of Code 2019 Day 4　　使用語言：C#">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-19T10:07:50.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Advent-of-Code-2019-Day-4">
+<meta name="twitter:description" content="題目：Advent of Code 2019 Day 4　　使用語言：C#">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Sylvia&#39;s Blog
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/bluesea310827">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Advent-of-Code-2019-Day-4
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-12-19T09:40:58.000Z" itemprop="datePublished">Dec 19 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Advent-of-Code-2019/">Advent of Code 2019</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 minutes read (About 498 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>　　題目：<a href="https://adventofcode.com/2019/day/4" target="_blank" rel="noopener">Advent of Code 2019 Day 4</a><br>　　使用語言：C#</p>
+<p>　　<a id="more"></a><br>　　第四天的題目讓我卡超久……我覺得一定是題目敘述的問題不是我英文太差的問題(?!)。<br>　　簡單來說就是給定一些規則推算所有可能的密碼，算出會有幾組可能的密碼就可以了。這題我除了暴力法還真的想不到其他比較聰明的解法，所以就直接暴力法處理了。<br>　　卡最久的是Part2，一開始看題目理解成是只要有數字相鄰重複超過三個就不行，範例給的123444因為4重複了三次，所以就是不合規則的密碼。<br>　　但不管怎麼算就是差一點，後來還是靠Google看大家的討論才知道，如果只有一個相鄰數字是不超過兩個也可以，譬如說112444，這個算合法的密碼。知道這個之後馬上就改完算對了……</p>
+<pre><code><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">					</span><br><span class="line">public class Program</span><br><span class="line">&#123;</span><br><span class="line">	public static int _lagerDitgit = 0;</span><br><span class="line">	public static List&lt;DigitPostion&gt; _repeatDigits = new List&lt;DigitPostion&gt;();</span><br><span class="line">	</span><br><span class="line">	public static void Main()</span><br><span class="line">	&#123;</span><br><span class="line">		var minPassword = 134792;</span><br><span class="line">		var maxPassword = 675810;</span><br><span class="line">		var result = new List&lt;int&gt;();</span><br><span class="line">		</span><br><span class="line">		for(int i = minPassword;i&lt;=maxPassword;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			var checkValue = i.ToString();</span><br><span class="line">			_lagerDitgit = 0;</span><br><span class="line">			_repeatDigits = new List&lt;DigitPostion&gt;();</span><br><span class="line">			</span><br><span class="line">			// Check Six-digit</span><br><span class="line">			if(!checkValue.Length.Equals(6)) continue;</span><br><span class="line">			</span><br><span class="line">			// Check Rule</span><br><span class="line">			if(!CheckRule(checkValue)) continue;</span><br><span class="line">			</span><br><span class="line">			result.Add(i);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Console.WriteLine(result.Count);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static bool CheckRule(string value)</span><br><span class="line">	&#123;</span><br><span class="line">		var result = false;</span><br><span class="line">		</span><br><span class="line">		for(int i = 0;i&lt;value.Length - 1; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			var rule1 = false;</span><br><span class="line">			var rule2 = false;</span><br><span class="line">			</span><br><span class="line">			var firstDigit = value.Substring(i, 1);</span><br><span class="line">			var secondDigit = value.Substring(i+1, 1);</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">			rule1 = CheckTwoAdjacentDigitsAreTheSame(firstDigit, secondDigit);</span><br><span class="line">			</span><br><span class="line">			rule2 = CheckNeverDecrease(firstDigit, secondDigit);</span><br><span class="line">			</span><br><span class="line">			if(rule1) </span><br><span class="line">			&#123;</span><br><span class="line">				result = true;</span><br><span class="line">				</span><br><span class="line">				var tmp = new DigitPostion();</span><br><span class="line">				tmp.digit = Convert.ToInt32(firstDigit);</span><br><span class="line">				tmp.pos = i;</span><br><span class="line">				_repeatDigits.Add(tmp);</span><br><span class="line">				tmp = new DigitPostion();</span><br><span class="line">				tmp.digit = Convert.ToInt32(secondDigit);</span><br><span class="line">				tmp.pos = i + 1;</span><br><span class="line">				_repeatDigits.Add(tmp);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			if(!rule2) </span><br><span class="line">			&#123;</span><br><span class="line">				result = false;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		if(result) </span><br><span class="line">		&#123;</span><br><span class="line">			// 取得所有相鄰有重複的數字</span><br><span class="line">			var ruleJudgeDigit = _repeatDigits.Select(x=&gt;x.digit).Distinct().ToList();</span><br><span class="line">			</span><br><span class="line">			foreach(var digit in ruleJudgeDigit)</span><br><span class="line">			&#123;</span><br><span class="line">				// 判斷相鄰數字是否超過2個</span><br><span class="line">				var ruleJudgeData = _repeatDigits.Where(x=&gt;x.digit.Equals(digit)).Distinct().ToList();</span><br><span class="line">		</span><br><span class="line">				int tempPos = 0;</span><br><span class="line">				int count = 0;</span><br><span class="line">			</span><br><span class="line">				for(int i = 0; i &lt; ruleJudgeData.Count; i++)</span><br><span class="line">				&#123;</span><br><span class="line">					if(tempPos == (ruleJudgeData[i]).pos - 1 &amp;&amp; (ruleJudgeData[i]).pos != tempPos) </span><br><span class="line">						count++;</span><br><span class="line">					else</span><br><span class="line">						tempPos = (ruleJudgeData[i]).pos;</span><br><span class="line">				&#125;</span><br><span class="line">			</span><br><span class="line">				if(count &lt;= 1) </span><br><span class="line">				&#123;</span><br><span class="line">					// 只要有一個相鄰數字是不超過兩個就可以 e.g. 112444</span><br><span class="line">					result = true;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">					</span><br><span class="line">				result = false;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static bool CheckTwoAdjacentDigitsAreTheSame(string digit1, string digit2)</span><br><span class="line">	&#123;</span><br><span class="line">		if(!digit1.Equals(digit2)) return false;</span><br><span class="line">		</span><br><span class="line">		if(Convert.ToInt32(digit1) &gt; _lagerDitgit) _lagerDitgit = Convert.ToInt32(digit1);</span><br><span class="line">		</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static bool CheckNeverDecrease(string digit1, string digit2)</span><br><span class="line">	&#123;</span><br><span class="line">		return (Convert.ToInt32(digit1) &lt;= Convert.ToInt32(digit2));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public class DigitPostion</span><br><span class="line">	&#123;</span><br><span class="line">		public int digit &#123;get;set;&#125;</span><br><span class="line">		public int pos &#123;get;set;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/NET-Core/">#.NET Core</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Advent-of-Code-2019/">#Advent of Code 2019</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Advent-of-Code/">#Advent of Code</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/C/">#C#</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Console/">#Console</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/12/19/Advent-of-Code-2019-Day-5/">Advent-of-Code-2019-Day-5</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/12/18/Advent-of-Code-2019-Day-3/">Advent-of-Code-2019-Day-3</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="addthis_inline_share_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4ec21d7602a5a8"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://bluesea310827.github.io/2019/12/19/Advent-of-Code-2019-Day-4/';
+        this.page.identifier = '2019/12/19/Advent-of-Code-2019-Day-4/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'sylviablog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/bluesea310827">
+                    
+                    GitHub
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="Linkedin" href="https://www.linkedin.com/in/sylvia-chang-28b681180/">
+                    
+                    Linkedin
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="CakeResume" href="https://www.cakeresume.com/me/sylviachang-2cfe83">
+                    
+                    CakeResume
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
