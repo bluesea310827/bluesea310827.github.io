@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Advent-of-Code-2019-Day-7 - Sylvia&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="題目：Advent of Code 2019 Day 7　　使用語言：C#">
+<meta name="keywords" content=".NET Core,Advent of Code 2019,Advent of Code,C#,Console">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Advent-of-Code-2019-Day-7">
+<meta property="og:url" content="http://bluesea310827.github.io/2020/03/25/Advent-of-Code-2019-Day-7/index.html">
+<meta property="og:site_name" content="Sylvia&#39;s Blog">
+<meta property="og:description" content="題目：Advent of Code 2019 Day 7　　使用語言：C#">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-25T05:47:24.248Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Advent-of-Code-2019-Day-7">
+<meta name="twitter:description" content="題目：Advent of Code 2019 Day 7　　使用語言：C#">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Sylvia&#39;s Blog
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/bluesea310827">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Advent-of-Code-2019-Day-7
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-03-25T05:15:54.000Z" itemprop="datePublished">Mar 25 2020</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Advent-of-Code-2019/">Advent of Code 2019</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            7 minutes read (About 1099 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>　　題目：<a href="https://adventofcode.com/2019/day/7" target="_blank" rel="noopener">Advent of Code 2019 Day 7</a><br>　　使用語言：C#</p>
+<p>　　<a id="more"></a><br>　　Day 7 的題目真的是大魔王，又用到了前幾個題目寫的IntCode Program，將IntCode Program當成Amplifier使用。<br>　　這題光Part 1讓輸入經過五個Amplifier就讓我卡了好久，還有五個數字的排列組合作為設定，這裡是有點作弊去Google研究了遞迴的寫法，然後Amplifier的邏輯也研究很久……<br>　　我還記得Part 1一開始寫出答案的程式並不是下面範例的模樣，一開始想說先有就好就有點懶得整理架構，結果Part 2馬上被打臉，只好乖乖整理物件和架構，然後不小心沒有保留到原本的版本。<br>　　Part 2則是多了循環機制，也是研究結束條件研究了很久，我想我最大的問題應該是英文理解能力吧……最後還是靠Reddit上的討論才看懂。</p>
+<h3 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h3><p>　　<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">					</span><br><span class="line">public class Program</span><br><span class="line">&#123;</span><br><span class="line">	public static List&lt;int&gt; opCodeList = new List&lt;int&gt;() &#123;1,2,3,4,5,6,7,8&#125;;</span><br><span class="line">	public static bool isHalt = false;</span><br><span class="line">	</span><br><span class="line">	private static List&lt;int[]&gt; PhaseList = new List&lt;int[]&gt;();</span><br><span class="line">	private static int Phase = -1;</span><br><span class="line">	private static int[] Permutation = new int[5] &#123;0,0,0,0,0&#125;;</span><br><span class="line">	</span><br><span class="line">	public static void Main()</span><br><span class="line">	&#123;</span><br><span class="line">		// P1</span><br><span class="line">		var inputArray = new int[] &#123;3,8,1001,8,10,8,105,1,0,0,21,42,51,76,101,118,199,280,361,442,99999,3,9,101,5,9,9,102,2,9,9,1001,9,4,9,102,2,9,9,4,9,99,3,9,1002,9,3,9,4,9,99,3,9,1002,9,4,9,1001,9,3,9,1002,9,5,9,101,3,9,9,1002,9,2,9,4,9,99,3,9,101,4,9,9,1002,9,2,9,1001,9,3,9,1002,9,3,9,101,4,9,9,4,9,99,3,9,101,3,9,9,1002,9,3,9,101,2,9,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,1,9,4,9,99,3,9,1001,9,1,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,1,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,1002,9,2,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,101,1,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,1,9,9,4,9,3,9,102,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,2,9,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,1001,9,1,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,101,1,9,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,101,1,9,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,2,9,9,4,9,99&#125;;</span><br><span class="line">		//TEST</span><br><span class="line">		//var inputArray = new int[] &#123;3,15,3,16,1002,16,10,16,1,16,15,15,4,15,99,0,0&#125;;</span><br><span class="line">		</span><br><span class="line">		// 計算所有Phase Setting</span><br><span class="line">		CalculatePermutation(0);</span><br><span class="line">		</span><br><span class="line">		int signal = 0;</span><br><span class="line">		int finalSignal = 0;</span><br><span class="line">		int[] finalPermutation = new int[5] &#123;0,0,0,0,0&#125;;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		// 取得每一台增幅器的Phase Setting</span><br><span class="line">		for(int phaseCount = 0;phaseCount&lt;PhaseList.Count;phaseCount++)</span><br><span class="line">		&#123;</span><br><span class="line">			// 建立五台增幅器</span><br><span class="line">			var ampA = new Amplifier(inputArray);</span><br><span class="line">			var ampB = new Amplifier(inputArray);</span><br><span class="line">			var ampC = new Amplifier(inputArray);</span><br><span class="line">			var ampD = new Amplifier(inputArray);</span><br><span class="line">			var ampE = new Amplifier(inputArray);</span><br><span class="line">			</span><br><span class="line">			isHalt = false;</span><br><span class="line">			signal = 0;</span><br><span class="line">			var phaseSetting = PhaseList[phaseCount];</span><br><span class="line"></span><br><span class="line">			// 執行五台增幅器</span><br><span class="line">			signal = ampA.Amplify(signal, phaseSetting[0]);</span><br><span class="line">			signal = ampB.Amplify(signal, phaseSetting[1]);</span><br><span class="line">			signal = ampC.Amplify(signal, phaseSetting[2]);</span><br><span class="line">			signal = ampD.Amplify(signal, phaseSetting[3]);</span><br><span class="line">			signal = ampE.Amplify(signal, phaseSetting[4]);</span><br><span class="line">			</span><br><span class="line">			if(finalSignal.Equals(0) || signal &gt; finalSignal) </span><br><span class="line">			&#123;</span><br><span class="line">				finalPermutation = phaseSetting;</span><br><span class="line">				finalSignal = signal;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Console.WriteLine(&quot;Result = &quot; + finalSignal);</span><br><span class="line">		Console.WriteLine(&quot;finalPermutation = &quot; + finalPermutation[0] + finalPermutation[1] + finalPermutation[2] + finalPermutation[3] + finalPermutation[4]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void CalculatePermutation(int PermutationCount)</span><br><span class="line">	&#123;</span><br><span class="line">		Phase++;</span><br><span class="line">		Permutation.SetValue(Phase, PermutationCount);</span><br><span class="line">		if(Phase.Equals(4))</span><br><span class="line">		&#123;</span><br><span class="line">			PhaseList.Add(new int[] &#123;Permutation[0], Permutation[1], Permutation[2], Permutation[3], Permutation[4]&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			for(int i = 0;i &lt; 5;i++)</span><br><span class="line">				if(Permutation[i].Equals(0)) CalculatePermutation(i);</span><br><span class="line">		&#125;</span><br><span class="line">		Phase--;</span><br><span class="line">		Permutation.SetValue(0, PermutationCount);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static int IntcodeProgram(ref int[] inputArray, int input, int phase)</span><br><span class="line">	&#123;</span><br><span class="line">		int i = 0;</span><br><span class="line">		int outputValue = 0;</span><br><span class="line">		bool usePhase = false;</span><br><span class="line">		while(i &lt; inputArray.Length)</span><br><span class="line">		&#123;</span><br><span class="line">			</span><br><span class="line">			var opCodeDigit =  inputArray[i];</span><br><span class="line">			var opCode = opCodeDigit % 100;</span><br><span class="line"></span><br><span class="line">			var firstValueParameterMode = opCodeDigit / 100 % 10;</span><br><span class="line">			var secondValueParameterMode = opCodeDigit / 1000 % 10;</span><br><span class="line">			var ouputValueParameterMode = opCodeDigit / 10000 % 10;</span><br><span class="line">			</span><br><span class="line">			if(opCode.Equals(99) || (!opCodeList.Contains(opCode))) break;</span><br><span class="line">			</span><br><span class="line">			int outputPosition = 0;</span><br><span class="line">			int firstValue = 0;</span><br><span class="line">			int secondValue = 0;</span><br><span class="line">			</span><br><span class="line">			firstValue = GetValue(firstValueParameterMode, inputArray[i+1], inputArray);</span><br><span class="line">			if(!opCode.Equals(3) &amp;&amp; !opCode.Equals(4))</span><br><span class="line">				secondValue = GetValue(secondValueParameterMode, inputArray[i+2], inputArray);</span><br><span class="line">			</span><br><span class="line">			switch(opCode)</span><br><span class="line">			&#123;</span><br><span class="line">				case 1:</span><br><span class="line">					outputPosition = inputArray[i+3];</span><br><span class="line">					inputArray[outputPosition] = firstValue + secondValue;</span><br><span class="line">					i+=4;</span><br><span class="line">					break;</span><br><span class="line">				case 2:</span><br><span class="line">					outputPosition = inputArray[i+3];</span><br><span class="line">					inputArray[outputPosition] = firstValue * secondValue;</span><br><span class="line">					i+=4;</span><br><span class="line">					break;</span><br><span class="line">				case 3:</span><br><span class="line">					firstValue = inputArray[i+1];</span><br><span class="line">					// 第一次執行時使用Phase</span><br><span class="line">					inputArray[firstValue] = usePhase ? input : phase;</span><br><span class="line">					usePhase = true;</span><br><span class="line">					i+=2;</span><br><span class="line">					break;</span><br><span class="line">				case 4:</span><br><span class="line">					outputValue = firstValue;</span><br><span class="line">					i+=2;</span><br><span class="line">					break;</span><br><span class="line">				case 5:</span><br><span class="line">					if(!firstValue.Equals(0)) i = secondValue;</span><br><span class="line">					else i+=3;</span><br><span class="line">					break;</span><br><span class="line">				case 6:</span><br><span class="line">					if(firstValue.Equals(0)) i = secondValue;</span><br><span class="line">					else i+=3;</span><br><span class="line">					break;</span><br><span class="line">				case 7:</span><br><span class="line">					outputPosition = inputArray[i+3];</span><br><span class="line">					if(firstValue &lt; secondValue) inputArray[outputPosition] = 1;</span><br><span class="line">					else inputArray[outputPosition] = 0;</span><br><span class="line">					i+=4;</span><br><span class="line">					break;</span><br><span class="line">				case 8:</span><br><span class="line">					outputPosition = inputArray[i+3];</span><br><span class="line">					if(firstValue.Equals(secondValue)) inputArray[outputPosition] = 1;</span><br><span class="line">					else inputArray[outputPosition] = 0;</span><br><span class="line">					i+=4;</span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		return outputValue;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static int GetValue(int mode, int value, int[] dataSource)</span><br><span class="line">	&#123;</span><br><span class="line">		if(mode.Equals(0))</span><br><span class="line">			return dataSource[value];</span><br><span class="line">		</span><br><span class="line">		return value;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public class Amplifier</span><br><span class="line">	&#123;</span><br><span class="line">		private int[] _intCodeArray = null;</span><br><span class="line">		public bool _usePhase = false;</span><br><span class="line">		</span><br><span class="line">		public int[] intCodeArray </span><br><span class="line">		&#123;</span><br><span class="line">			get &#123; return _intCodeArray; &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		public Amplifier(int[] inputArray)</span><br><span class="line">		&#123;</span><br><span class="line">			_intCodeArray = inputArray;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		public int Amplify(int input, int phase)</span><br><span class="line">		&#123;</span><br><span class="line">			if(_usePhase) </span><br><span class="line">			&#123;</span><br><span class="line">				phase = input;</span><br><span class="line">				_usePhase = true;</span><br><span class="line">			&#125;</span><br><span class="line">			return IntcodeProgram(ref _intCodeArray, input, phase);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Part-2"><a href="#Part-2" class="headerlink" title="Part 2"></a>Part 2</h3><p>　　<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">					</span><br><span class="line">public class Program</span><br><span class="line">&#123;</span><br><span class="line">	public static List&lt;int&gt; opCodeList = new List&lt;int&gt;() &#123;1,2,3,4,5,6,7,8&#125;;</span><br><span class="line">	public static bool isHalt = false;</span><br><span class="line"></span><br><span class="line">	private static List&lt;int[]&gt; PhaseList = new List&lt;int[]&gt;();</span><br><span class="line">	private static int Phase = -1;</span><br><span class="line">	private static int[] Permutation = new int[5] &#123;0,0,0,0,0&#125;;</span><br><span class="line">    private static int[] PhaseInput = new int[5] &#123;5,6,7,8,9&#125;;</span><br><span class="line"></span><br><span class="line">	public static void Main()</span><br><span class="line">	&#123;</span><br><span class="line">		// Input</span><br><span class="line">		var inputArray = new int[] &#123;3,8,1001,8,10,8,105,1,0,0,21,42,51,76,101,118,199,280,361,442,99999,3,9,101,5,9,9,102,2,9,9,1001,9,4,9,102,2,9,9,4,9,99,3,9,1002,9,3,9,4,9,99,3,9,1002,9,4,9,1001,9,3,9,1002,9,5,9,101,3,9,9,1002,9,2,9,4,9,99,3,9,101,4,9,9,1002,9,2,9,1001,9,3,9,1002,9,3,9,101,4,9,9,4,9,99,3,9,101,3,9,9,1002,9,3,9,101,2,9,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,1,9,4,9,99,3,9,1001,9,1,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,1,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,1002,9,2,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,101,1,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,1,9,9,4,9,3,9,102,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,2,9,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,1001,9,1,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,101,1,9,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,101,1,9,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,2,9,9,4,9,99&#125;;</span><br><span class="line">		// Test 1</span><br><span class="line">		//var inputArray = new int[] &#123;3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5&#125;;</span><br><span class="line">        // Test 2</span><br><span class="line">        //var inputArray = new int[] &#123;3,52,1001,52,-5,52,3,53,1,52,56,54,1007,54,5,55,1005,55,26,1001,54,-5,54,1105,1,12,1,53,54,53,1008,54,0,55,1001,55,1,55,2,53,55,53,4,53,1001,56,-1,56,1005,56,6,99,0,0,0,0,10&#125;;</span><br><span class="line"></span><br><span class="line">		// 計算所有Phase Setting</span><br><span class="line">		CalculatePermutation(0);</span><br><span class="line"></span><br><span class="line">		int signal = 0;</span><br><span class="line">		int finalSignal = 0;</span><br><span class="line">		int[] finalPermutation = new int[5] &#123;0,0,0,0,0&#125;;</span><br><span class="line">        Console.WriteLine(&quot;PhaseList = &quot; + PhaseList.Count);</span><br><span class="line">		// 取得每一台增幅器的Phase Setting</span><br><span class="line">		for(int phaseCount = 0;phaseCount&lt;PhaseList.Count;phaseCount++)</span><br><span class="line">		&#123;</span><br><span class="line">			// 建立五台增幅器</span><br><span class="line">			var ampA = new Amplifier(inputArray);</span><br><span class="line">			var ampB = new Amplifier(inputArray);</span><br><span class="line">			var ampC = new Amplifier(inputArray);</span><br><span class="line">			var ampD = new Amplifier(inputArray);</span><br><span class="line">			var ampE = new Amplifier(inputArray);</span><br><span class="line"></span><br><span class="line">			isHalt = false;</span><br><span class="line">			signal = 0;</span><br><span class="line">			var phaseSetting = PhaseList[phaseCount];</span><br><span class="line">			while(!isHalt)</span><br><span class="line">			&#123;</span><br><span class="line">				// 執行五台增幅器</span><br><span class="line">				signal = ampA.Amplify(signal, phaseSetting[0]);</span><br><span class="line">				signal = ampB.Amplify(signal, phaseSetting[1]);</span><br><span class="line">				signal = ampC.Amplify(signal, phaseSetting[2]);</span><br><span class="line">				signal = ampD.Amplify(signal, phaseSetting[3]);</span><br><span class="line">				signal = ampE.Amplify(signal, phaseSetting[4]);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			if(finalSignal.Equals(0) || signal &gt; finalSignal) </span><br><span class="line">			&#123;</span><br><span class="line">				finalPermutation = phaseSetting;</span><br><span class="line">				finalSignal = signal;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Console.WriteLine(&quot;Result = &quot; + finalSignal);</span><br><span class="line">		Console.WriteLine(&quot;finalPermutation = &quot; + finalPermutation[0] + finalPermutation[1] + finalPermutation[2] + finalPermutation[3] + finalPermutation[4]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void CalculatePermutation(int PermutationCount)</span><br><span class="line">	&#123;</span><br><span class="line">		Phase++;</span><br><span class="line">		Permutation.SetValue(Phase, PermutationCount);</span><br><span class="line">		if(Phase.Equals(4))</span><br><span class="line">		&#123;</span><br><span class="line">			PhaseList.Add(new int[] &#123;PhaseInput[Permutation[0]], PhaseInput[Permutation[1]], PhaseInput[Permutation[2]], PhaseInput[Permutation[3]], PhaseInput[Permutation[4]]&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			for(int i = 0;i &lt; 5;i++)</span><br><span class="line">				if(Permutation[i].Equals(0)) CalculatePermutation(i);</span><br><span class="line">		&#125;</span><br><span class="line">		Phase--;</span><br><span class="line">		Permutation.SetValue(0, PermutationCount);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void PrintArray(int[] intArray)</span><br><span class="line">	&#123;</span><br><span class="line">		var output = string.Empty;</span><br><span class="line">		for(int i = 0; i &lt; intArray.Length;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			output += intArray[i] + &quot;, &quot;;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		Console.WriteLine(output);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static (int output, int pointer) IntcodeProgram(ref int[] inputArray, int input, int phase, int pointer)</span><br><span class="line">	&#123;</span><br><span class="line">		int i = pointer;</span><br><span class="line">		int outputValue = 0;</span><br><span class="line">		bool usePhase = false;</span><br><span class="line">		while(i &lt; inputArray.Length)</span><br><span class="line">		&#123;</span><br><span class="line"></span><br><span class="line">			var opCodeDigit =  inputArray[i];</span><br><span class="line">			var opCode = opCodeDigit % 100;</span><br><span class="line">			var firstValueParameterMode = opCodeDigit / 100 % 10;</span><br><span class="line">			var secondValueParameterMode = opCodeDigit / 1000 % 10;</span><br><span class="line">			var ouputValueParameterMode = opCodeDigit / 10000 % 10;</span><br><span class="line"></span><br><span class="line">			if(opCode.Equals(99) || (!opCodeList.Contains(opCode)))</span><br><span class="line">			&#123;</span><br><span class="line">				isHalt = true;</span><br><span class="line">				return (input, 0);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			int outputPosition = 0;</span><br><span class="line">			int firstValue = 0;</span><br><span class="line">			int secondValue = 0;</span><br><span class="line"></span><br><span class="line">			firstValue = GetValue(firstValueParameterMode, inputArray[i+1], inputArray);</span><br><span class="line">			if(!opCode.Equals(3) &amp;&amp; !opCode.Equals(4))</span><br><span class="line">				secondValue = GetValue(secondValueParameterMode, inputArray[i+2], inputArray);</span><br><span class="line"></span><br><span class="line">			switch(opCode)</span><br><span class="line">			&#123;</span><br><span class="line">				case 1:</span><br><span class="line">					outputPosition = inputArray[i+3];</span><br><span class="line">					inputArray[outputPosition] = firstValue + secondValue;</span><br><span class="line">					i+=4;</span><br><span class="line">					break;</span><br><span class="line">				case 2:</span><br><span class="line">					outputPosition = inputArray[i+3];</span><br><span class="line">					inputArray[outputPosition] = firstValue * secondValue;</span><br><span class="line">					i+=4;</span><br><span class="line">					break;</span><br><span class="line">				case 3:</span><br><span class="line">					firstValue = inputArray[i+1];</span><br><span class="line">					// 第一次執行時使用Phase</span><br><span class="line">					inputArray[firstValue] = usePhase ? input : phase;</span><br><span class="line">					usePhase = true;</span><br><span class="line">					i+=2;</span><br><span class="line">					break;</span><br><span class="line">				case 4:</span><br><span class="line">					outputValue = firstValue;</span><br><span class="line">					i+=2;</span><br><span class="line">					return (outputValue, i);</span><br><span class="line">				case 5:</span><br><span class="line">					if(!firstValue.Equals(0)) i = secondValue;</span><br><span class="line">					else i+=3;</span><br><span class="line">					break;</span><br><span class="line">				case 6:</span><br><span class="line">					if(firstValue.Equals(0)) i = secondValue;</span><br><span class="line">					else i+=3;</span><br><span class="line">					break;</span><br><span class="line">				case 7:</span><br><span class="line">					outputPosition = inputArray[i+3];</span><br><span class="line">					if(firstValue &lt; secondValue) inputArray[outputPosition] = 1;</span><br><span class="line">					else inputArray[outputPosition] = 0;</span><br><span class="line">					i+=4;</span><br><span class="line">					break;</span><br><span class="line">				case 8:</span><br><span class="line">					outputPosition = inputArray[i+3];</span><br><span class="line">					if(firstValue.Equals(secondValue)) inputArray[outputPosition] = 1;</span><br><span class="line">					else inputArray[outputPosition] = 0;</span><br><span class="line">					i+=4;</span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		return (outputValue, i);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static int GetValue(int mode, int value, int[] dataSource)</span><br><span class="line">	&#123;</span><br><span class="line">		if(mode.Equals(0))</span><br><span class="line">			return dataSource[value];</span><br><span class="line"></span><br><span class="line">		return value;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public class Amplifier</span><br><span class="line">	&#123;</span><br><span class="line">		private int[] _intCodeArray = null;</span><br><span class="line">		// 記錄Amplifier執行到IntCodeArray的哪個位置</span><br><span class="line">        private int arrayPointer = 0;</span><br><span class="line">		public bool _usePhase = false;</span><br><span class="line"></span><br><span class="line">		public int[] intCodeArray </span><br><span class="line">		&#123;</span><br><span class="line">			get &#123; return _intCodeArray; &#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public Amplifier(int[] inputArray)</span><br><span class="line">		&#123;</span><br><span class="line">			_intCodeArray = (int[])inputArray.Clone();</span><br><span class="line">			inputArray.CopyTo(_intCodeArray, 0);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public int Amplify(int input, int phase)</span><br><span class="line">		&#123;</span><br><span class="line">			if(_usePhase) </span><br><span class="line">			&#123;</span><br><span class="line">				phase = input;</span><br><span class="line">			&#125;</span><br><span class="line">			_usePhase = true;</span><br><span class="line">            var result = IntcodeProgram(ref _intCodeArray, input, phase, arrayPointer);</span><br><span class="line">			// 保留Amplifier的執行位置</span><br><span class="line">            arrayPointer = result.pointer;</span><br><span class="line">			return result.output;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/NET-Core/">#.NET Core</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Advent-of-Code-2019/">#Advent of Code 2019</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Advent-of-Code/">#Advent of Code</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/C/">#C#</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Console/">#Console</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/12/19/Advent-of-Code-2019-Day-6/">Advent-of-Code-2019-Day-6</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="addthis_inline_share_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4ec21d7602a5a8"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://bluesea310827.github.io/2020/03/25/Advent-of-Code-2019-Day-7/';
+        this.page.identifier = '2020/03/25/Advent-of-Code-2019-Day-7/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'sylviablog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/bluesea310827">
+                    
+                    GitHub
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="Linkedin" href="https://www.linkedin.com/in/sylvia-chang-28b681180/">
+                    
+                    Linkedin
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="CakeResume" href="https://www.cakeresume.com/me/sylviachang-2cfe83">
+                    
+                    CakeResume
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
